@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 import Form from '@components/Form'
@@ -66,4 +66,12 @@ const EditPrompt = () => {
     )
 }
 
-export default EditPrompt
+const page = () => {
+    return (
+        <Suspense>
+            <EditPrompt />
+        </Suspense>
+    )
+}
+
+export default page
