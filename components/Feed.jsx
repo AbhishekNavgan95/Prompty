@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import React, { useState, useEffect } from 'react'
 import PromptCard from './PromptCard'
@@ -26,7 +26,7 @@ const Feed = () => {
   }
 
   const fetchPosts = async () => {
-    const response = await fetch('/api/prompt', {cache: 'no-cache'});
+    const response = await fetch('/api/prompt', { next: { revalidate: 10 } });
     const data = await response.json();
     setPosts(data);
   };
