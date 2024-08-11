@@ -3,6 +3,7 @@ import Prompt from "@models/prompt";
 
 export const GET = async (request, { params }) => {
   try {
+    console.log("getting user posts");
     await connectToDB();
 
     const prompts = await Prompt.find({
