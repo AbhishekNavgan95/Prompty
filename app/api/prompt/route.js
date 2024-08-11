@@ -3,6 +3,7 @@ import Prompt from "@models/prompt";
 
 export const GET = async (req) => {
   try {
+    console.log("fetching all posts")
     await connectToDB();
 
     const prompts = await Prompt.find().populate("creator");
