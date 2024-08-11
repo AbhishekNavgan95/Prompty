@@ -6,7 +6,7 @@ export const GET = async (req) => {
     console.log("fetching all posts")
     await connectToDB();
 
-    const prompts = await Prompt.find().populate("creator");
+    const prompts = await Prompt.find({}).populate("creator");
 
     return new Response(JSON.stringify(prompts), {
       status: 200,
