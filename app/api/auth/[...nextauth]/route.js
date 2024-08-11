@@ -7,7 +7,7 @@ import User from "@models/user";
 const handler = NextAuth({
   providers: [
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_Id,
+      clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
@@ -29,6 +29,9 @@ const handler = NextAuth({
         const userExist = await User.findOne({
           email: profile.email,
         });
+
+        console.log("Google profile:", profile);
+        console.log("User exists:", userExist);
 
         // if not create a new user and save to db
         if (!userExist) {
