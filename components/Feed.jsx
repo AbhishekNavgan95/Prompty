@@ -29,9 +29,14 @@ const Feed = () => {
       const response = await fetch('/api/prompt');
       const data = await response.json();
       setPosts(data);
-    }
-    fetchPosts()
-  }, [])
+    };
+  
+    fetchPosts();
+  
+    const interval = setInterval(fetchPosts, 5000);
+  
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className='feed '>
