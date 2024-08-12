@@ -15,6 +15,8 @@ const PromptCardList = ({ data, handleTagClick }) => {
   )
 }
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 const Feed = () => {
 
@@ -26,7 +28,7 @@ const Feed = () => {
   }
 
   const fetchPosts = async () => {
-    const response = await fetch(`/api/prompt?_=${new Date().getTime()}`, {
+    const response = await fetch(`/api/prompt`, {
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
         'Pragma': 'no-cache',
