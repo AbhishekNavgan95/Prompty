@@ -3,6 +3,9 @@
 import React, { useState, useEffect } from 'react'
 import PromptCard from './PromptCard'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
     <div className='mt-16 prompt_layout'>
@@ -15,9 +18,6 @@ const PromptCardList = ({ data, handleTagClick }) => {
   )
 }
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
-
 const Feed = () => {
 
   const [searchText, setSearchText] = useState('')
@@ -28,13 +28,7 @@ const Feed = () => {
   }
 
   const fetchPosts = async () => {
-    const response = await fetch(`/api/prompt`, {
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0',
-      },
-    });
+    const response = await fetch(`/api/prompt`, {cache: "no-cache", next: {revalidate: 0}});
     const data = await response.json();
     setPosts(data);
   };
