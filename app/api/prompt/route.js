@@ -1,6 +1,9 @@
 import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
 
+// export const dynamic = 'force-dynami'
+export const revalidate = 0
+
 export const GET = async (req) => {
   try {
     console.log("fetching all posts")
